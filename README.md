@@ -65,6 +65,7 @@ If you do not get this result, PP is not installed correctly, or not referenced 
 PP requires specific configuration for your telescope equipment. The documentation for this is on the page above for PP. If you need help, here is an example of my "mytelescope.py" file:
 This is made by copying the provided "telescopes.py" file and making modifications to match the information in your image fits headers. If you compare the differences between the file below and the provided "telescopes.py" file you wills see the changes I had to make to get the software working.
 
+```
 # MYTELESCOPE setup parameters
 twelveinchccd_param = {
     'telescope_instrument': '12IN/CCD',  # telescope/instrument name 
@@ -139,7 +140,7 @@ instrument_identifiers['QHY CCD QHY163M-ea87d84'] = '12IN_CCD'
 
 ### translate telescope keyword into parameter set defined here
 telescope_parameters['12IN_CCD'] = twelveinchccd_param
-[/text]
+```
 
 You'll also notice that the YOURCCD.swarp, YOURCCD.scamp, and YOURCCD.sex files are referenced as well. Copy them from another scope in the PP setup directory and rename them to match the paths you provide in the "mytelescope.py" file above. There is a lot of other information in here you have to fill out from your CCD header. Just read it over and you'll figure out what goes where.
 
