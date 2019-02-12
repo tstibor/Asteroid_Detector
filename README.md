@@ -316,3 +316,19 @@ I had to modify a few things in photometry pipeline to fix some minor issues. On
 
 I ran into a few issues with Photometry Pipeline. Here is what I did to work around them:
 
+pp_prepare.py:
+```
+        if obsparam['radec_separator'] == 'XXX':
+            ra_deg = float(header[obsparam['ra']])
+            dec_deg = float(header[obsparam['dec']])
+        else:
+            ra_string = header[obsparam['ra']].split(
+                obsparam['radec_separator'])
+            #print(ra_string)
+            if (ra_string[0]==''): <-- Added this
+                ra_string.pop(0)
+            dec_string = header[obsparam['dec']].split(
+                obsparam['radec_separator'])
+            if (dec_string[0]==''): <-- Added this
+                dec_string.pop(0)
+```
