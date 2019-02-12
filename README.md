@@ -327,11 +327,11 @@ There were some leading blank spaces on my RA / DEC coordinates causing problems
             ra_string = header[obsparam['ra']].split(
                 obsparam['radec_separator'])
             #print(ra_string)
-            if (ra_string[0]==''): <-- Added this
+            if (ra_string[0]==''): #<-- Added this
                 ra_string.pop(0)
             dec_string = header[obsparam['dec']].split(
                 obsparam['radec_separator'])
-            if (dec_string[0]==''): <-- Added this
+            if (dec_string[0]==''): #<-- Added this
                 dec_string.pop(0)
 ```
 
