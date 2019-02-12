@@ -9,7 +9,7 @@ Video of Asteroid Detector in Action: https://www.youtube.com/watch?v=ayBl_3fZ76
 
 This is a guide on how you can get Asteroid Detector up and running. Just a fair warning, this will be rather long and complicated. If you are not familiar with Linux or Python, it may prove to be difficult to get working. It is a personal project I built for my own needs and am offering free without support. If you find any massive bugs or errors in the guide please let me know. You need an MPC observatory code to submit observations of asteroids. Also feel free to contribute if you know Python!
 
-Asteroid detector works by using Photometerypipeline (PP) to extract sources from your images, and calibrate them. It works by stacking groups of images to get better S/N ratios then looking in the stacked images for asteroids, it also works with single images. These sources are stored in .db files. Asteroid Detector scans these .db files for moving objects based on some search parameters you provide. If found, it uses DS9 to plot these asteroids for you to confirm if they are real or not with a conformation window. It will completely build your MPC report files. It can also parse the MPC to identify asteroids, and has the MPC's object rating tool (Digest2) built in so you can see the orbit probabilities as you scan through the detections. Asteroid Detector and PP create a lot of files during calibration and object searching. You can clean most of the unused files up from the GUI. The MPC report file (Report.txt) is saved in whatever directory you are working in. Asteroid Detector assumes you have somewhat accurate RA / DEC information in your fits headers for plate solving.
+Asteroid detector works by using Photometerypipeline (PP) to extract sources from your images, and calibrate them. It works by stacking groups of images with Siril to get better S/N ratios then looking in the stacked images for asteroids, it also works with single images. These sources are stored in .db files. Asteroid Detector scans these .db files for moving objects based on some search parameters you provide. If found, it uses DS9 to plot these asteroids for you to confirm if they are real or not with a conformation window. It will completely build your MPC report files. It can also parse the MPC to identify asteroids, and has the MPC's object rating tool (Digest2) built in so you can see the orbit probabilities as you scan through the detections. Asteroid Detector and PP create a lot of files during calibration and object searching. You can clean most of the unused files up from the GUI. The MPC report file (Report.txt) is saved in whatever directory you are working in. Asteroid Detector assumes you have somewhat accurate RA / DEC information in your fits headers for plate solving.
 
 # Setup
 A Linux installation, I'm running Ubuntu 16.04 in VirtualBox
@@ -153,6 +153,9 @@ This is another program you'll want to get familiar with. I extracted DS9 to /us
 
 There are a lot of python modules that Asteroid Detector relies on. Most of them come with Ubuntu 16.04 but some you'll have to install with apt-get or pip
 Make sure all of these Python3 modules are installed: pyds9, pickle, glob, datetime, astropy, bs4, subprocess, shlex, tkinter, requests, random, string, sqlite3, numpy
+
+Install Siril for stacking
+http://free-astro.org/index.php/Siril:install
 
 From here, you should do some extractions using pp_extract and change your .sex file to output a "check.fit" image of APERTURES so you can see how your extraction settings are working.
 
