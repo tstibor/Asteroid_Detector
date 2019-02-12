@@ -360,6 +360,8 @@ Replaceed it with:
     ra_deg = c.ra.deg * 15 #Convert to hours
     dec_deg = c.dec.deg
     rad_deg = 1.0 # Manually set the area to be retrieved. 
+    
+    hdulistT.close()
 # ------------------- HACK ---------------------------------------------------_#
 
 ```
