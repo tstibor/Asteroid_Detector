@@ -5,23 +5,23 @@ A buddy module to Photometry Pipeline for asteroid detection and reporting.
 
 Video of Asteroid Detector in Action: https://www.youtube.com/watch?v=ayBl_3fZ760
 
-<center><b>INTRODUCTION:</b></center>
+# Introduction
 
 This is a guide on how you can get Asteroid Detector up and running. Just a fair warning, this will be rather long and complicated. If you are not familiar with Linux or Python, it may prove to be difficult to get working. It is a personal project I built for my own needs and am offering free without support. If you find any massive bugs or errors in the guide please let me know. You need an MPC observatory code to submit observations of asteroids. Also feel free to contribute if you know Python!
 
 Asteroid detector works by using Photometerypipeline (PP) to extract sources from your images, and calibrate them. It works by stacking groups of images to get better S/N ratios then looking in the stacked images for asteroids, it also works with single images. These sources are stored in .db files. Asteroid Detector scans these .db files for moving objects based on some search parameters you provide. If found, it uses DS9 to plot these asteroids for you to confirm if they are real or not with a conformation window. It will completely build your MPC report files. It can also parse the MPC to identify asteroids, and has the MPC's object rating tool (Digest2) built in so you can see the orbit probabilities as you scan through the detections. Asteroid Detector and PP create a lot of files during calibration and object searching. You can clean most of the unused files up from the GUI. The MPC report file (Report.txt) is saved in whatever directory you are working in. Asteroid Detector assumes you have somewhat accurate RA / DEC information in your fits headers for plate solving.
 
-<center><b>SETUP:</b></center>
+# Setup
 A Linux installation, I'm running Ubuntu 16.04 in VirtualBox
 I setup a shared folder between Windows and VirtualBox to move files into Linux
 
 Install Source Extractor, SWarp, and Scamp
-
+```
 sudo apt-get update
 sudo apt-get install sextractor
 sudo apt-get install scamp
 sudo apt-get install swarp
-
+```
 I highly recommend reading over the documentation for Source Extractor, SWarp, and Scamp to get a basic idea of how they work together.
 
 The next step is to get Photometrypipeline (PP) running: <a href="http://photometrypipeline.readthedocs.io/en/latest/install.html" target="_blank">PhotometeryPipeline</a>
@@ -30,18 +30,17 @@ There are detailed instructions at that site for getting PP up and going.
 Install PP in /home/YourUsername/photometerypipeline/
 
 To get SWarp running right from PP, I had to modify the pp_combine file like so:
-
+```
 In pp_combine line 234:
     commandline = (('swarp -combine Y -combine_type %s -delete_tmpfiles '+
 change to:
     commandline = (('SWarp -combine Y -combine_type %s -delete_tmpfiles '+
-
+```
 
 From there, you'll have to make some changes to your bashrc file
 Edit the bashrc from terminal with nano
-
+```
 nano ~/.bashrc
-
 
 append these lines to the end, replace username with your username in Linux
 
@@ -50,6 +49,7 @@ export PHOTPIPEDIR=/home/username/photometrypipeline/
 export PATH=$PATH:/home/username/photometrypipeline/
 export PATH=$PATH:/home/username/AsteroidDetector/digest2/
 alias python=python3
+```
 
 This makes files in these folders available to run anywhere from the terminal window
 
