@@ -275,6 +275,8 @@ Asteroid Detector parsed the MPC and found a match for the asteroid, and it also
 
 Once this is all working, you need to verify you are getting good extraction from source extractor, and that your residuals are good across the frame. My images are warped pretty bad by the optics because my FOV is pretty large. I had to change the setting in my PP/setup/MYSCOPE.scamp file: DISTORT_DEGREES to 3 in order to account for this. Getting somewhat familiar with Source Extractor, Scamp, and SWarp will help you a lot.
 
+I also changed DEBLEND_MINCONT to 0.0001 in my 12IN_CCD.sex file to get sources that were close together separated. 
+
 You can access the two most common Source Extractor settings in the "mytelescope.py" config file above. You can see what I chose for mine.
 
 This has been a lot of fun working on and in the long run will save me A LOT of time loading images, solving them, stacking them, and then searching for asteroids. If you can get it running I hope you also find it useful.
