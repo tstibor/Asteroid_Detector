@@ -223,7 +223,7 @@ The settings are pretty self explanatory. Reference DS9 manual for options with 
 
 To make a quicklaunch for it, create a new file on your Desktop called "AsteroidDetector.sh" or whatever you'd like. In this file put:
 ```
-gnome-terminal -e "python3 /home/YourUsername/AsteroidDetector/AsteroidGUI.py"
+gnome-terminal -e "python3 /home/YourUsername/AsteroidDetector/Main.py"
 ```
 Right click on the file, go to properties, and make sure it is set to executable under permissions. 
 
