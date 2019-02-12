@@ -317,7 +317,8 @@ I had to modify a few things in photometry pipeline to fix some minor issues. On
 I ran into a few issues with Photometry Pipeline. Here is what I did to work around them:
 
 There were some leading blank spaces on my RA / DEC coordinates causing problems with pp_prepare. I modified it like so:
-pp_prepare.py:
+# pp_prepare.py:
+
 ```
         if obsparam['radec_separator'] == 'XXX':
             ra_deg = float(header[obsparam['ra']])
@@ -333,3 +334,36 @@ pp_prepare.py:
             if (dec_string[0]==''): <-- Added this
                 dec_string.pop(0)
 ```
+
+I was also having issues with the skycenter function in pp_calibrate which was causing the image calibration to fail as it was not parsing the viezer servers correctly:
+
+# pp_calibrate.py:
+
+Comment this line out:
+``` python
+#ra_deg, dec_deg, rad_deg = skycenter(catalogs)
+```
+Replaceed it with:
+``` python
+#------------------- HACK ---------------------------------------------------_#
+    #NOT RETURNING RIGHT POSITIONS, OVERWRITE
+    hdulistT = fits.open(filenames[0], ignore_missing_end=True)
+
+    header = hdulistT[0].header
+    ra_new = header[obsparam['ra']].strip()
+    dec_new = header[obsparam['dec']].strip()
+
+    c = SkyCoord(ra_new, dec_new, frame='icrs', unit='deg')
+    print(c.dec.deg, " From PP_Calibrate Hack")
+    print(c.ra.deg * 15, " From PP_Calibrate Hack")
+
+    ra_deg = c.ra.deg * 15 #Convert to hours
+    dec_deg = c.dec.deg
+    rad_deg = 1.0 # Manually set the area to be retrieved. 
+# ------------------- HACK ---------------------------------------------------_#
+
+```
+
+
+
+
