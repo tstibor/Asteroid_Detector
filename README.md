@@ -2,8 +2,7 @@
 A buddy module to Photometry Pipeline for asteroid detection and reporting
 
 
-(click to enlarge)
-<a href="/dnloads/AsteroidDetector.JPG" rel="lightbox" ><img src="/dnloads/AsteroidDetector.JPG" width="600px"></a>
+<img src="http://www.rankinstudio.com/dnloads/AsteroidDetector.JPG" width="600px" />
 
 <center><b>INTRODUCTION:</b></center>
 
