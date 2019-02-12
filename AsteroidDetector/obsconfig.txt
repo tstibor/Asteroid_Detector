@@ -1,14 +1,14 @@
 ### Asteroid Detector Settings ###
-Observatory Code: V03
-Name: David Rankin
-Observer: D. Rankin
-Measurer: D. Rankin
+Observatory Code: YOUR MPC CODE
+Name: FIRST LAST
+Observer: FIRST INIT. LAST
+Measurer: FIRST INIT. LAST
 Telescope: .30-m F4 Reflector + CCD
-Email: David@rankinstudio.com
-Initials(2): DR
+Email: YOUR EMAIL
+Initials(2): YOUR FIRST 2 INITIALS
 PP Path: /home/david/photometrypipeline/
-Begin Exposure Key: DATE-OBS
-Exposure Time Key: EXPTIME
+Begin Exposure Key: YOUR BEGIN EXP FITS KEY
+Exposure Time Key: YOUR EXP TIME FITS KEY
 
 ### Defaults ###
 Default FWHM Minimum: 1.5
@@ -18,8 +18,8 @@ Default Limiting Mag: 20.5
 Max Resid: 0.45
 Slop Factor: 4
 Star Lim Mag: 21
-Default File Open Dir: /home/david/Desktop
-Dark Image: /home/david/Desktop/Dark2.fits
+Default File Open Dir: /home/YOUR USER NAME/Desktop
+Dark Image: /home/YOUR USER NAME/Desktop/Dark2.fits
 
 ### DS9 Settings ###
 DS9 Text Color: green
