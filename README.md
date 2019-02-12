@@ -163,17 +163,17 @@ From here, you should do some extractions using pp_extract and change your .sex 
 Asteroid Detector expects data in a certain directory structure:
 ```
 Folder(Sequencename)
-   (Folder1)
+   (1) - folder
       -Image1
       -Image2
       -Image3
       -Image4
-   (Folder2)
+   (2)
       -Image1
       -Image2
       ect...
-   (Folder3)
-   (Folder4)
+   (3)...
+   (4)...
 ```
 It stacks 4 groups of images to achieve better S/N ratio for searching. With my setup, I typically shoot 35 X 40 sec subs, then group them in stacks of 5. So images 1-5, 11-15, 21-25, 31-35. 
 
