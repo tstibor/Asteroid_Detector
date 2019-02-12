@@ -3,6 +3,8 @@ A buddy module to Photometry Pipeline for asteroid detection and reporting.
 
 <img src="http://www.rankinstudio.com/dnloads/AsteroidDetector2.JPG" width="700px" />
 
+Video of Asteroid Detector in Action: https://www.youtube.com/watch?v=ayBl_3fZ760
+
 <center><b>INTRODUCTION:</b></center>
 
 This is a guide on how you can get Asteroid Detector up and running. Just a fair warning, this will be rather long and complicated. If you are not familiar with Linux or Python, it may prove to be difficult to get working. It is a personal project I built for my own needs and am offering free without support. If you find any massive bugs or errors in the guide please let me know. You need an MPC observatory code to submit observations of asteroids. Also feel free to contribute if you know Python!
