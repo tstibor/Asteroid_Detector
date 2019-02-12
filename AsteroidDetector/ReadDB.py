@@ -156,4 +156,5 @@ def parse_db(dir, limmag, star_search_radius, fwhm_min, ast_search_rad, star_lim
             message = "Too many transients"
     return message
 
-#parse_db("/home/david/Desktop/20180609/T12Sorted/", 20.5, 2, 1.5, 20, "variable")
+#parse_db(dir, limmag, star_search_radius, fwhm_min, ast_search_rad, star_lim_mag):
+#parse_db("/home/david/Desktop/20180609/T12Sorted/", 20.5, 2, 1.5, 20, 21)
