@@ -54,14 +54,14 @@ alias python=python3
 This makes files in these folders available to run anywhere from the terminal window
 
 To test this, you should be able to open a terminal and just run a command like pp_run or pp_combine. It should prompt with options you are missing.
-
+```
 david@david-VirtualBox:~$ pp_run
 usage: pp_run [-h] [-prefix PREFIX] [-target TARGET] [-filter FILTER]
               [-fixed_aprad FIXED_APRAD]
               [-source_tolerance {none,low,medium,high}] [-solar]
               images [images ...]
 pp_run: error: too few arguments
-
+```
 If you do not get this result, PP is not installed correctly, or not referenced correctly in the bashrc file.
 
 PP requires specific configuration for your telescope equipment. The documentation for this is on the page above for PP. If you need help, here is an example of my "mytelescope.py" file:
@@ -156,30 +156,30 @@ Make sure all of these Python3 modules are installed: pyds9, pickle, glob, datet
 
 From here, you should do some extractions using pp_extract and change your .sex file to output a "check.fit" image of APERTURES so you can see how your extraction settings are working.
 
-<center><b>Asteroid Detector</b></center>
+# Asteroid Detector
 Asteroid Detector expects data in a certain directory structure:
-[text]
+```
 Folder(Sequencename)
    (Folder1)
       -Image1
       -Image2
-      ect..
+      -Image3
+      -Image4
    (Folder2)
       -Image1
       -Image2
       ect...
    (Folder3)
    (Folder4)
-[/text]
-It also assumes these stacks are evenly spaced in time, so that a moving object will have somewhat even gaps between positions. This should be a standard searching method. As mentioned above, it stacks 4 groups of images to achieve better S/N ratio for searching. With my setup, I typically shoot 35 X 40 sec subs, then group them in stacks of 5. So images 1-5, 11-15, 21-25, 31-35. 
+```
+It stacks 4 groups of images to achieve better S/N ratio for searching. With my setup, I typically shoot 35 X 40 sec subs, then group them in stacks of 5. So images 1-5, 11-15, 21-25, 31-35. 
 
 After you verify that all the above is working, getting Asteroid Detector installed is easy. Just download this archive and extract to /home/YourUsername/AsteroidDetector
-Download Asteroid Detector: <a href="/dnloads/AsteroidDetector.tar.gz" target="_blank"> Asteroid Detector </a> 
 
 In the Asteroid Detector directory you'll see a desigused.txt file. This keeps track of the designations you send to the MPC so it doesn't create duplicates. 
 
 There is also an obsconfig.txt file. This contains the settings for Asteroid Detector:
-[text]
+```
 ### Asteroid Detector Settings ###
 Observatory Code: V03
 Name: David Rankin
@@ -192,53 +192,60 @@ PP Path: /home/david/photometrypipeline/
 Begin Exposure Key: DATE-OBS
 Exposure Time Key: EXPTIME
 
-### Defaults ArcSec ###
+### Defaults ###
 Default FWHM Minimum: 1.5
-Default Asteroid Search Radius: 17
-Default Star Search Radius: 1
-Default Limiting Mag: 21
-Max Resid: 0.35
-Spacing Res: 14
+Default Asteroid Search Radius: 30
+Default Star Search Radius: 3
+Default Limiting Mag: 20.5
+Max Resid: 0.45
+Slop Factor: 4
+Star Lim Mag: 21
 Default File Open Dir: /home/david/Desktop
+Dark Image: /home/david/Desktop/Dark2.fits
 
 ### DS9 Settings ###
 DS9 Text Color: green
 Invert images?: no
-Image Keyword: Light
+Image Keyword: Image
 Blink Inverval: 0.2
 DS9 Font Size: 15
-[/text]
+
+### EXTRACTION SETTINGS ###
+PP Register Command: pp_register -snr 6 -minarea 4.5
+
+# FINAL EXTRACTION COMMAND
+PP Photometry Command: pp_photometry -snr 1.8 -minarea 2.4 -aprad 4
+
+# FINAL EXTRACTION COMMAND
+PP Calibrate Command: pp_calibrate -maxflag 5
+```
 The settings are pretty self explanatory. Reference DS9 manual for options with color and blinking interval ect.
-Two important settings are "Max Resid" and "Spacing Res". Resid will toss out objects over the given threshold, and spacing res has to do with how unevenly spaced the points can be along the line. If you increase this, it is more strict. So a lower value will allow more unevenly spaced points. This helps weed out false detections. 
 
 To make a quicklaunch for it, create a new file on your Desktop called "AsteroidDetector.sh" or whatever you'd like. In this file put:
-[text]
+```
 gnome-terminal -e "python3 /home/YourUsername/AsteroidDetector/AsteroidGUI.py"
-[/text]
+```
 Right click on the file, go to properties, and make sure it is set to executable under permissions. 
 
-<center><b>Using Asteroid Detector</b></center>
+# Using Asteroid Detector
 
 From here, you just launch it and select your working directory with the structure specified above. Click on "PROCESS IMGS". Be patient, this can take a while
 
 Once this completes and you have good extractions in the .db files, you don't need to run it again. You can change your asteroid searching parameters and run any number of searches on the .db files you'd like without having to re-register the images.
 
-If this completes successfully you'll get a message to search for asteroids, you can then proceed with that.  Output should show the number of possible asteroids found along with a prompt to search the MPC for matches as you go: 
-[text]
-0.00417 Asteroid search radius in degrees
 
-Searching for asteroids images 1-3, and 1-4
 
-Searching for asteroids images 2-4
+```
+Asteroid  7 / 19
 
-#########################################
-#####  4  Possible asteroids found  #####
-#########################################
+###### RESIDUALS ######
+-0.00
++0.01
+-0.03
++0.01
 
-Search for designations?
-[/text]
-After this, it should launch DS9 and step you through the possible asteroids 1 by 1. If you answer yes to any of them and you chose to search MPC you should get output like this:
-[text]
+ 0.01  Asteroid mean residual
+
 Searching MPC, please wait..
 
 Information for TMP001
@@ -246,29 +253,25 @@ Information for TMP001
 #####    MPC SEARCH RESULTS BELOW    #####
 ##########################################
 
-              Object designation         R.A.      Decl.     V       Offsets     Motion/hr   Orbit  Further observations?
-                                        h  m  s     °  '  "        R.A.   Decl.  R.A.  Decl.        Comment (Elong/Decl/V at date 1)
-     TMP001  P1972                    06 10 00.7 +27 35 11  18.9   0.0E   0.0N    28-    10-   10o  None needed at this time.
- 
- Number of objects checked =  792526
- 
+      TMP001  24215                    07 01 31.5 +19 55 09  17.8   0.0E   0.0S    39-     4+   17o  None needed at this time.
+MPC desig:  24215
+
 ############################################
 #####    OBJECT PROBABILITIES BELOW    #####
 ############################################
 Desig.    RMS Int NEO N22 N18 Other Possibilities
-TMP001   0.24   2   2   1   0 (MC 1) (MB1 39) (Pal <1) (Han <1) (MB2 35) (MB3 21) (Hil <1) (JFC <1)
-[/text]
+ 24215   0.05   6   6   2   0 (MC 1) (MB1 57) (MB2 20) (MB3 12) (JFC <1)
+
+ Finished searching and scoring object. 
+
+```
 
 Asteroid Detector parsed the MPC and found a match for the asteroid, and it also displayed the orbit probabilities for the asteroid. If you chose not to overwrite an existing report, it doesn't write any information out and assigns a temp designation of TMP001 for all rocks.
 
-<center><b>Advanced Configuration</b></center>
+# Advanced Configuration
 
 Once this is all working, you need to verify you are getting good extraction from source extractor, and that your residuals are good across the frame. My images are warped pretty bad by the optics because my FOV is pretty large. I had to change the setting in my PP/setup/MYSCOPE.scamp file: DISTORT_DEGREES to 3 in order to account for this. Getting somewhat familiar with Source Extractor, Scamp, and SWarp will help you a lot.
 
 You can access the two most common Source Extractor settings in the "mytelescope.py" config file above. You can see what I chose for mine.
 
 This has been a lot of fun working on and in the long run will save me A LOT of time loading images, solving them, stacking them, and then searching for asteroids. If you can get it running I hope you also find it useful.
-
-I'll be making changes to it a lot. Check back often.
-
-Upcoming changes: PA and VEL astrometry for faster objects.
