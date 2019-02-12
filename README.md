@@ -307,3 +307,8 @@ I also changed DEBLEND_MINCONT to 0.0001 in my 12IN_CCD.sex file to get sources 
 You can access the two most common Source Extractor settings in the "mytelescope.py" config file above. You can see what I chose for mine.
 
 This has been a lot of fun working on and in the long run will save me A LOT of time loading images, solving them, stacking them, and then searching for asteroids. If you can get it running I hope you also find it useful.
+
+# Issues Wiht PP
+
+I ran into a few issues with Photometry Pipeline. Here is what I did to work around them:
+
