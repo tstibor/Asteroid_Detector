@@ -16,12 +16,12 @@ A Linux installation, I'm running Ubuntu 16.04 in VirtualBox
 I setup a shared folder between Windows and VirtualBox to move files into Linux
 
 Install Source Extractor, SWarp, and Scamp
-[text]
+
 sudo apt-get update
 sudo apt-get install sextractor
 sudo apt-get install scamp
 sudo apt-get install swarp
-[/text]
+
 I highly recommend reading over the documentation for Source Extractor, SWarp, and Scamp to get a basic idea of how they work together.
 
 The next step is to get Photometrypipeline (PP) running: <a href="http://photometrypipeline.readthedocs.io/en/latest/install.html" target="_blank">PhotometeryPipeline</a>
@@ -29,44 +29,43 @@ There are detailed instructions at that site for getting PP up and going.
 Install PP in /home/YourUsername/photometerypipeline/
 
 To get SWarp running right from PP, I had to modify the pp_combine file like so:
-[text]
+
 In pp_combine line 234:
     commandline = (('swarp -combine Y -combine_type %s -delete_tmpfiles '+
 change to:
     commandline = (('SWarp -combine Y -combine_type %s -delete_tmpfiles '+
-[/text]
+
 
 From there, you'll have to make some changes to your bashrc file
 Edit the bashrc from terminal with nano
-[text]
+
 nano ~/.bashrc
-[/text]
+
 
 append these lines to the end, replace username with your username in Linux
 
-[text]
 # photometry pipeline setup
 export PHOTPIPEDIR=/home/username/photometrypipeline/
 export PATH=$PATH:/home/username/photometrypipeline/
 export PATH=$PATH:/home/username/AsteroidDetector/digest2/
-alias python=python3[/text]
+alias python=python3
 
 This makes files in these folders available to run anywhere from the terminal window
 
 To test this, you should be able to open a terminal and just run a command like pp_run or pp_combine. It should prompt with options you are missing.
-[text]
+
 david@david-VirtualBox:~$ pp_run
 usage: pp_run [-h] [-prefix PREFIX] [-target TARGET] [-filter FILTER]
               [-fixed_aprad FIXED_APRAD]
               [-source_tolerance {none,low,medium,high}] [-solar]
               images [images ...]
 pp_run: error: too few arguments
-[/text]
+
 If you do not get this result, PP is not installed correctly, or not referenced correctly in the bashrc file.
 
 PP requires specific configuration for your telescope equipment. The documentation for this is on the page above for PP. If you need help, here is an example of my "mytelescope.py" file:
 This is made by copying the provided "telescopes.py" file and making modifications to match the information in your image fits headers. If you compare the differences between the file below and the provided "telescopes.py" file you wills see the changes I had to make to get the software working.
-[text]
+
 # MYTELESCOPE setup parameters
 twelveinchccd_param = {
     'telescope_instrument': '12IN/CCD',  # telescope/instrument name 
