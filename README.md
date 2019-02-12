@@ -182,6 +182,8 @@ After you verify that all the above is working, getting Asteroid Detector instal
 In the Asteroid Detector directory you'll see a desigused.txt file. This keeps track of the designations you send to the MPC so it doesn't create duplicates. 
 
 There is also an obsconfig.txt file. This contains the settings for Asteroid Detector:
+
+Here is my settings file
 ```
 ### Asteroid Detector Settings ###
 Observatory Code: V03
@@ -222,7 +224,18 @@ PP Photometry Command: pp_photometry -snr 1.8 -minarea 2.4 -aprad 4
 # FINAL EXTRACTION COMMAND
 PP Calibrate Command: pp_calibrate -maxflag 5
 ```
+
+ #The Settings File
 The settings are pretty self explanatory. Reference DS9 manual for options with color and blinking interval ect.
+
+Search parameters under Defaults are all specified in arc seconds. 
+"FWHM" ignores objects in the database with an FWHM in arcsec smaller than what you specify. This is handy so you are not subtracting noise as stars.
+
+"Default Star Search Radius" and "Default Asteroid Search Radius" are self explanatory.
+
+"Default Limiting Mag"
+
+
 
 To make a quicklaunch for it, create a new file on your Desktop called "AsteroidDetector.sh" or whatever you'd like. In this file put:
 ```
