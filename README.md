@@ -312,14 +312,14 @@ This has been a lot of fun working on and in the long run will save me A LOT of 
 
 # Issues With PP
 
-I had to modify a few things in photometry pipeline to fix some minor issues. One was with the skycenter function, another was with how it reads the coordinates in the image headers. I have included my photometrypipeline directory in "Extras" minus the git and example files so you can compare files if you run into issues. 
+I had to modify a few things in photometry pipeline to fix some minor issues. One was with the skycenter function, another was with how it reads the coordinates in the image headers. I have included my photometrypipeline directory in "Extras" minus the git and example files so you can compare files if you run into issues. If you run into errors, python is pretty good at helping you track down where the issues are.
 
 I ran into a few issues with Photometry Pipeline. Here is what I did to work around them:
 
 There were some leading blank spaces on my RA / DEC coordinates causing problems with pp_prepare. I modified it like so:
 ## pp_prepare.py:
 
-```
+``` python
         if obsparam['radec_separator'] == 'XXX':
             ra_deg = float(header[obsparam['ra']])
             dec_deg = float(header[obsparam['dec']])
