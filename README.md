@@ -154,7 +154,7 @@ You'll now need to install DS9. <a href="http://ds9.si.edu/site/Download.html" t
 This is another program you'll want to get familiar with. I extracted DS9 to /usr/local/bin/ so it could be ran from the command line anywhere. You can put it anywhere if you modify your bashrc file with the PATH like we did above. Make sure you can launch DS9 from a terminal window by simply typing DS9. 
 
 There are a lot of python modules that Asteroid Detector relies on. Most of them come with Ubuntu 16.04 but some you'll have to install with apt-get or pip
-Make sure all of these Python3 modules are installed: pyds9, pickle, glob, datetime, astropy, bs4, subprocess, shlex, tkinter, requests, random, string, sqlite3, numpy
+Make sure all of these Python3 modules are installed: pyds9, pickle, glob, datetime, astropy, bs4, subprocess, shlex, tkinter, requests, random, string, sqlite3, numpy, and others. Check the import statements at the head of the .py files to make sure you have the required modules. 
 
 Install Siril for stacking
 http://free-astro.org/index.php/Siril:install
