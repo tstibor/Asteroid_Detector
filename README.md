@@ -1,4 +1,4 @@
-# Asteroid_Detector
+# Asteroid Detector
 A buddy module to Photometry Pipeline for asteroid detection and reporting
 
 
