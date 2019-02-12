@@ -3,7 +3,7 @@ __author__ = 'David Rankin, David@rankinstudio.com'
 """
 Asteroid extraction from DB files.
 This module uses time based vectors to predict the 3rd and 4th hit after two objects are extracted
-matching the star searcha and asteroid search parameters. It needs to be rewritten in numpy to speed
+matching the star search and asteroid search parameters. It needs to be rewritten in numpy to speed
 it up.
 """
 
