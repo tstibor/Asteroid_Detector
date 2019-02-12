@@ -1,8 +1,7 @@
 # Asteroid Detector
-A buddy module to Photometry Pipeline for asteroid detection and reporting
+A buddy module to Photometry Pipeline for asteroid detection and reporting.
 
-
-<img src="http://www.rankinstudio.com/dnloads/AsteroidDetector.JPG" width="600px" />
+<img src="http://www.rankinstudio.com/dnloads/AsteroidDetector2.JPG" width="700px" />
 
 <center><b>INTRODUCTION:</b></center>
 
