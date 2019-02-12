@@ -316,6 +316,7 @@ I had to modify a few things in photometry pipeline to fix some minor issues. On
 
 I ran into a few issues with Photometry Pipeline. Here is what I did to work around them:
 
+There were some leading blank spaces on my RA / DEC coordinates causing problems with pp_prepare. I modified it like so:
 pp_prepare.py:
 ```
         if obsparam['radec_separator'] == 'XXX':
