@@ -181,7 +181,7 @@ After you verify that all the above is working, getting Asteroid Detector instal
 
 In the Asteroid Detector directory you'll see a desigused.txt file. This keeps track of the designations you send to the MPC so it doesn't create duplicates. 
 
- #The Settings File
+ # The Settings File
 
 There is also an obsconfig.txt file. This contains the settings for Asteroid Detector:
 
@@ -208,7 +208,6 @@ Max Resid: 0.45
 Slop Factor: 4
 Star Lim Mag: 21
 Default File Open Dir: /home/david/Desktop
-Dark Image: /home/david/Desktop/Dark2.fits
 
 ### DS9 Settings ###
 DS9 Text Color: green
@@ -230,13 +229,20 @@ PP Calibrate Command: pp_calibrate -maxflag 5
 The settings are pretty self explanatory. Reference DS9 manual for options with color and blinking interval ect.
 
 Search parameters under Defaults are all specified in arc seconds. 
+
 "FWHM" ignores objects in the database with an FWHM in arcsec smaller than what you specify. This is handy so you are not subtracting noise as stars.
 
 "Default Star Search Radius" and "Default Asteroid Search Radius" are self explanatory.
 
-"Default Limiting Mag"
+"Default Limiting Mag" only considers sources brighter this mag for transient objects (asteroids)
 
+"Max Resid" is the maximum acceptible residual you will accept (deviation from a line) for the object to be considered an asteroid.
 
+"Slop Factor" while searching, vectors are built around the first two detections based on the time elapsed between images. As you search for a 3rd hit, this is the factor of slop in arc seconds you will search in to find an object near the predicted location for the 3rd hit. This is also used for the 4th hit with a scale factor of 1.5 times the original slop factor. This effectively creates a cone that increases the further you get from the first two source hits.
+
+"Star Lim Mag" prevents the pipeline from subtracting asteroids that are near noise, where the noise may accidently be considered a star. It ignores any sources fainter than what you specify here.
+
+"PP Register Command" coveres the initial registration commands for PP. This is not the final extraction command, it is only used to calibrate the images. So you want to specify brighter soures here. 
 
 To make a quicklaunch for it, create a new file on your Desktop called "AsteroidDetector.sh" or whatever you'd like. In this file put:
 ```
