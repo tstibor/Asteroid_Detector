@@ -181,7 +181,7 @@ After you verify that all the above is working, getting Asteroid Detector instal
 
 In the Asteroid Detector directory you'll see a desigused.txt file. This keeps track of the designations you send to the MPC so it doesn't create duplicates. 
 
- # The Settings File
+## The Settings File
 
 There is also an obsconfig.txt file. This contains the settings for Asteroid Detector:
 
@@ -317,7 +317,7 @@ I had to modify a few things in photometry pipeline to fix some minor issues. On
 I ran into a few issues with Photometry Pipeline. Here is what I did to work around them:
 
 There were some leading blank spaces on my RA / DEC coordinates causing problems with pp_prepare. I modified it like so:
-# pp_prepare.py:
+## pp_prepare.py:
 
 ```
         if obsparam['radec_separator'] == 'XXX':
@@ -337,7 +337,7 @@ There were some leading blank spaces on my RA / DEC coordinates causing problems
 
 I was also having issues with the skycenter function in pp_calibrate which was causing the image calibration to fail as it was not parsing the viezer servers correctly:
 
-# pp_calibrate.py:
+## pp_calibrate.py:
 
 Comment this line out:
 ``` python
