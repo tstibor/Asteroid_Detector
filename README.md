@@ -181,6 +181,8 @@ After you verify that all the above is working, getting Asteroid Detector instal
 
 In the Asteroid Detector directory you'll see a desigused.txt file. This keeps track of the designations you send to the MPC so it doesn't create duplicates. 
 
+ #The Settings File
+
 There is also an obsconfig.txt file. This contains the settings for Asteroid Detector:
 
 Here is my settings file
@@ -225,7 +227,6 @@ PP Photometry Command: pp_photometry -snr 1.8 -minarea 2.4 -aprad 4
 PP Calibrate Command: pp_calibrate -maxflag 5
 ```
 
- #The Settings File
 The settings are pretty self explanatory. Reference DS9 manual for options with color and blinking interval ect.
 
 Search parameters under Defaults are all specified in arc seconds. 
