@@ -230,6 +230,8 @@ The settings are pretty self explanatory. Reference DS9 manual for options with 
 
 Search parameters under Defaults are all specified in arc seconds. 
 
+"Image Keyword" is very important. This is the keyword in the file names of your images. This is how AsteroidDetector finds your files. Please use ".fits" extension.
+
 "FWHM" ignores objects in the database with an FWHM in arcsec smaller than what you specify. This is handy so you are not subtracting noise as stars.
 
 "Default Star Search Radius" and "Default Asteroid Search Radius" are self explanatory.
