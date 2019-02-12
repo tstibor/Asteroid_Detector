@@ -271,7 +271,14 @@ Desig.    RMS Int NEO N22 N18 Other Possibilities
 
 ```
 
-# Advanced Configuration
+# Advanced Configuration / Testing
+
+I have included tools to troubleshoot extraction:
+
+"Show Trans" displays all extracted transient objects.
+"Show Extraction" with image number shows the extracted objects for the image specified.
+
+These are helpful with tweaking your extraction commands in the settings file.
 
 Once this is all working, you need to verify you are getting good extraction from source extractor, and that your residuals are good across the frame. My images are warped pretty bad by the optics because my FOV is pretty large. I had to change the setting in my PP/setup/MYSCOPE.scamp file: DISTORT_DEGREES to 3 in order to account for this. Getting somewhat familiar with Source Extractor, Scamp, and SWarp will help you a lot.
 
