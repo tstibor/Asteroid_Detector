@@ -336,10 +336,9 @@ There were some leading blank spaces on my RA / DEC coordinates causing problems
             if (dec_string[0]==''): #<-- Added this
                 dec_string.pop(0)
 ```
+## pp_calibrate.py:
 
 I was also having issues with the skycenter function in pp_calibrate which was causing the image calibration to fail as it was not parsing the viezer servers correctly:
-
-## pp_calibrate.py:
 
 Comment this line out:
 ``` python
