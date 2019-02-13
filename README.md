@@ -240,13 +240,13 @@ Search parameters under Defaults are all specified in arc seconds.
 
 "Default Limiting Mag" only considers sources brighter this mag for transient objects (asteroids)
 
-"Max Resid" is the maximum acceptible residual you will accept (deviation from a line) for the object to be considered an asteroid.
+"Max Resid" is the maximum acceptable residual you will accept (deviation from a line) for the object to be considered an asteroid.
 
 "Slop Factor" while searching, vectors are built around the first two detections based on the time elapsed between images. As you search for a 3rd hit, this is the factor of slop in arc seconds you will search in to find an object near the predicted location for the 3rd hit. This is also used for the 4th hit with a scale factor of 1.5 times the original slop factor. This effectively creates a cone that increases the further you get from the first two source hits.
 
 "Star Lim Mag" prevents the pipeline from subtracting asteroids that are near noise, where the noise may accidently be considered a star. It ignores any sources fainter than what you specify here.
 
-"PP Register Command" coveres the initial registration commands for PP. This is not the final extraction command, it is only used to calibrate the images. So you want to specify brighter soures here. 
+"PP Register Command" covers the initial registration commands for PP. This is not the final extraction command, it is only used to calibrate the images. So you want to specify brighter soures here. 
 
 To make a quicklaunch for it, create a new file on your Desktop called "AsteroidDetector.sh" or whatever you'd like. In this file put:
 ```
@@ -260,9 +260,9 @@ From here, you just launch it and select your working directory with the structu
 
 Once this completes and you have good extractions in the .db files, you don't need to run it again. You can change your asteroid searching parameters and run any number of searches on the .db files you'd like without having to re-register the images.
 
-Once asteroids are extracted, you'll notice the list window fills in with objects. These can be navigated with the up and down arrows on your keyboard. To "check" if an object is in the MPC database and get its probabilities without writing it to the final report, press "c" when the object is hilighted. If you are content it is real and wish to write it to the report, press "enter/return" on the higlihgted object. 
+Once asteroids are extracted, you'll notice the list window fills in with objects. These can be navigated with the up and down arrows on your keyboard. To "check" if an object is in the MPC database and get its probabilities without writing it to the final report, press "c" when the object is hilighted. If you are content it is real and wish to write it to the report, press "enter/return" on the highlighted object. 
 
-Exmaple output from pressing "c" on a suspected asteroid:
+Example output from pressing "c" on a suspected asteroid:
 
 ```
 Asteroid  7 / 19
