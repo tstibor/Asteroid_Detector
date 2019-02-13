@@ -19,7 +19,6 @@ Max Resid: 0.45
 Slop Factor: 4
 Star Lim Mag: 21
 Default File Open Dir: /home/YOUR USER NAME/Desktop
-Dark Image: /home/YOUR USER NAME/Desktop/Dark2.fits
 
 ### DS9 Settings ###
 DS9 Text Color: green
